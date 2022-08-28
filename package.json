@@ -1,0 +1,19 @@
+{
+  "name": "github-write-file",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-PERSONAL:Whozen/github-write-file.git"
+  },
+  "author": "Ujjen Baniya",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.9.1",
+    "@octokit/core": "^4.0.5"
+  }
+}
