@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,10 @@
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.9.1",
-    "@octokit/core": "^4.0.5"
+    "@octokit/core": "^4.0.5",
+    "onchange": "^7.1.0"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
   }
 }
