@@ -1,21 +1,21 @@
-name: 'github-write-file'
-description: 'Writes user input content onto user specified file'
+name: "github-write-file"
+description: "Writes user input content onto user specified file"
 inputs:
   fileName:
-    description: 'Name of file to write on'
+    description: "Name of file to write on"
     required: true
-    default: ''
+    default: ""
   path:
-    description: 'Path of file to write on'
+    description: "Path of file to write on"
     required: true
-    default: ''
+    default: ""
   content:
-    description: 'Content to write on file'
+    description: "Content to write on file"
     required: true
-    default: ''
+    default: ""
 outputs:
   repositories:
-    description: 'Content written to the file'
+    description: "Content written to the file"
 runs:
-  using: 'node14'
-  main: 'index.js'
+  using: "node14"
+  main: "index.js"
