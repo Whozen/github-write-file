@@ -14,7 +14,7 @@ inputs:
     required: true
     default: ""
 outputs:
-  repositories:
+  content:
     description: "Content written to the file"
 runs:
   using: "node14"
