@@ -18,4 +18,4 @@ outputs:
     description: "Content written to the file"
 runs:
   using: "node14"
-  main: "index.js"
+  main: "dist/index.js"
