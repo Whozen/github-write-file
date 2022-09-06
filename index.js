@@ -7,10 +7,10 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
     const username = process.env.GITHUB_REPOSITORY.split("/")[0];
     const repo = process.env.GITHUB_REPOSITORY.split("/")[1];
     const getOutputFile = await octokit
-      .request("GET /repos/{owner}/{repo}/contents/{path}", {
+      .request('GET /repos/{owner}/{repo}/contents/{path}', {
         owner: username,
         repo: repo,
-        path: core.getInput("path"),
+        path: core.getInput('path'),
       })
       .catch((e) => {
         console.error("Failed: ", e);
@@ -18,19 +18,19 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
       });
     const sha = getOutputFile.data.sha;
 
-    const data = core.getInput("content");
+    const data = core.getInput('content');
 
     await octokit
-      .request("PUT /repos/{owner}/{repo}/contents/{path}", {
+      .request('PUT /repos/{owner}/{repo}/contents/{path}', {
         owner: username,
         repo: repo,
-        path: core.getInput("path"),
+        path: core.getInput('path'),
         message: "(Automated) Update file",
         content: Buffer.from(data, "utf8").toString("base64"),
         sha: sha,
       })
       .then(() => {
-        core.setOutput("Content written: ", data);
+        core.setOutput('Content written: ', data);
       })
       .catch((e) => {
         console.error("Failed: ", e);
