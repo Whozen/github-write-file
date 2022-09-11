@@ -2,11 +2,11 @@ name: "github-write-file"
 description: "Writes user input content onto user specified file"
 inputs:
   path:
-    description: "Path of file including filename to write on"
+    description: "Path of file (including filename and extension) to write on"
     required: true
     type: string
   newFile:
-    description: "Do you want to create new file if the mentioned file is not present? Else, workflow will fail"
+    description: "Do you want to create new file if the mentioned file is not present?"
     required: true
     type: boolean
     default: true
