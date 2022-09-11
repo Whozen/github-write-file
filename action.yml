@@ -2,16 +2,30 @@ name: "github-write-file"
 description: "Writes user input content onto user specified file"
 inputs:
   path:
-    description: "Path of file to write on"
+    description: "Path of file (including filename and extension) to write on"
     required: true
-    default: ""
+    type: string
+  newFile:
+    description: "Do you want to create new file if the mentioned file is not present?"
+    required: true
+    type: boolean
+    default: true
   content:
     description: "Content to write on file"
     required: true
+    type: string
     default: ""
+  overwrite:
+    description: "Do you want to overwrite the existing content or append to it?"
+    required: true
+    type: choice
+    default: "Overwrite"
+    options:
+      - Overwrite
+      - Append
 outputs:
   content:
-    description: "Content written to the file"
+    description: "Content in the file"
 runs:
   using: "node16"
   main: "dist/index.js"
