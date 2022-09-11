@@ -8,7 +8,7 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
     const repo = process.env.GITHUB_REPOSITORY.split("/")[1];
 
     const makeNewFile = core.getInput("newFile");
-    const overwriteContent = core.getInput("overwrite");
+    const overwriteOrAppend = core.getInput("overwrite");
     const userContent = core.getInput("content");
 
     let sha = "";
@@ -34,9 +34,10 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
       fileContent = getOutputFile.data.content;
     }
 
-    const dataToWrite = overwriteContent
-      ? `${fileContent} \n${userContent}`
-      : userContent;
+    const dataToWrite =
+      overwriteOrAppend === "append"
+        ? `${fileContent} \n${userContent}`
+        : userContent;
 
     const params = {
       owner: username,
@@ -46,7 +47,7 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
       content: Buffer.from(dataToWrite, "utf8").toString("base64"),
     };
 
-    if (sha != "" && overwriteContent) {
+    if (sha != "" && makeNewFile) {
       params.sha = sha;
     }
 
