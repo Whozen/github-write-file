@@ -36,7 +36,7 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
     const dataToWrite =
       overwriteOrAppend === "Append"
-        ? `${fileContent} \n${userContent}`
+        ? fileContent
         : userContent;
 
     const params = {
