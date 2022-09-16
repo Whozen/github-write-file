@@ -34,10 +34,10 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
       fileContent = getOutputFile.data.content;
     }
 
-    const dataToWrite =
-      overwriteOrAppend === "Append"
-        ? fileContent
-        : userContent;
+    const dataToWrite = overwriteOrAppend;
+      // overwriteOrAppend === "Append"
+      //   ? `${fileContent} \n${userContent}`
+      //   : userContent;
 
     const params = {
       owner: username,
@@ -54,7 +54,7 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
     await octokit
       .request("PUT /repos/{owner}/{repo}/contents/{path}", params)
       .then(() => {
-        core.setOutput("Content written: ", data);
+        core.setOutput("Content written: ", dataToWrite);
       })
       .catch((e) => {
         console.error("Failed: ", e);
