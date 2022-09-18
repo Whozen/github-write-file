@@ -54,7 +54,7 @@ const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
     await octokit
       .request("PUT /repos/{owner}/{repo}/contents/{path}", params)
       .then(() => {
-        core.setOutput("Content written: ", dataToWrite);
+        core.setOutput("content", dataToWrite);
       })
       .catch((e) => {
         console.error("Failed: ", e);
